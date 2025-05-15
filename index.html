@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>レグ家計簿</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log("Service Worker registered"));
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>レグ家計簿</h1>
+    
+    <img src="assets/reg-snack.png" alt="レグ" class="reg-img" />
+    <p id="reg-comment">おやつもらってうれしいでちゅ〜</p>
+
+    <div class="input-area">
+      <select id="category">
+        <option value="ひかちゃん収入">ひかちゃん収入</option>
+        <option value="はるちゃん収入">はるちゃん収入</option>
+        <option value="レグのおやつ、等">レグのおやつ、等</option>
+        <option value="家賃・光熱費等の支出">家賃・光熱費等の支出</option>
+        <option value="はるちゃん課金笑">はるちゃん課金笑</option>
+      </select>
+      <input type="number" id="amount" placeholder="金額" />
+      <button onclick="addEntry()">追加</button>
+    </div>
+
+    <div class="chart-area">
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <div class="history">
+      <h2>履歴</h2>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
